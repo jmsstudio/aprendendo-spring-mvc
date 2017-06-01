@@ -10,7 +10,9 @@
         <h2>Lista de produtos</h2>
 
         <div>
-            <h5>${successMessage}</h5>
+            <h5 style="background-color: deepskyblue">${successMessage}</h5>
+            <h5 style="background-color: aquamarine">${message}</h5>
+            <h4 style="background-color: #f00">${error}</h4>
             <table>
                 <thead>
                     <tr>

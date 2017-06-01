@@ -15,20 +15,25 @@ public class FileManager {
     private HttpServletRequest request;
 
     public String save(String basePath, MultipartFile multipartFile) throws IOException{
-        final String fileName = multipartFile.getOriginalFilename();
+        String filePath = "-";
+        if (!multipartFile.getOriginalFilename().isEmpty()) {
+            final String fileName = multipartFile.getOriginalFilename();
 
-        String realPath = request.getServletContext().getRealPath(File.separator + basePath);
-        String path = realPath + File.separator + fileName;
+            String realPath = request.getServletContext().getRealPath(File.separator + basePath);
+            String path = realPath + File.separator + fileName;
 
-        File directory = new File(realPath);
+            File directory = new File(realPath);
 
-        if (!directory.exists()) {
-            directory.mkdirs();
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+
+            multipartFile.transferTo(new File(path));
+
+            filePath = basePath + File.separator + fileName;
         }
 
-        multipartFile.transferTo(new File(path));
-
-        return basePath + File.separator + fileName;
+        return filePath;
     }
 
 }

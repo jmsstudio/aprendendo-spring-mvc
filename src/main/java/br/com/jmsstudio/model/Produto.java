@@ -3,7 +3,10 @@ package br.com.jmsstudio.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -20,7 +23,7 @@ public class Produto {
     @ElementCollection
     List<Preco> precos;
 
-    @DateTimeFormat//(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     LocalDate dataLancamento;
 
     String pathSumario;
@@ -69,6 +72,15 @@ public class Produto {
         return dataLancamento;
     }
 
+    public Date getDataLancamentoAsDate() {
+        Date data = null;
+        if (dataLancamento != null) {
+            data = Date.from(dataLancamento.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        }
+
+        return data;
+    }
+
     public void setDataLancamento(LocalDate dataLancamento) {
         this.dataLancamento = dataLancamento;
     }
@@ -79,5 +91,25 @@ public class Produto {
 
     public void setPathSumario(String pathSumario) {
         this.pathSumario = pathSumario;
+    }
+
+    public BigDecimal getPreco(TipoPreco tipoPreco) {
+        return precos.stream().filter(p -> p.getTipo().equals(tipoPreco)).findFirst().get().getValor();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Produto produto = (Produto) o;
+
+        return !(id != null ? !id.equals(produto.id) : produto.id != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }

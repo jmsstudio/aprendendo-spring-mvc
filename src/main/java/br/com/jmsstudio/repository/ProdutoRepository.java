@@ -1,6 +1,7 @@
 package br.com.jmsstudio.repository;
 
 import br.com.jmsstudio.model.Produto;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,7 @@ public class ProdutoRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
+    @CacheEvict(value = "produtosHomeCache", allEntries = true)
     public void save(Produto produto) {
         entityManager.persist(produto);
     }

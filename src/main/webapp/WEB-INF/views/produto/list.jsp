@@ -4,21 +4,25 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <c:url value="/" var="contextPath" />
+        <link href="${contextPath}resources/css/bootstrap.min.css" rel="stylesheet">
+        <link href="${contextPath}resources/css/bootstrap-theme.min.css" rel="stylesheet">
+
         <title>Livros de java, Android, Iphone, PHP, Ruby e muito mais - Casa do código</title>
     </head>
     <body>
-        <h2>Lista de produtos</h2>
+        <div class="container">
+            <h2 class="page-header">Lista de produtos</h2>
 
-        <div>
-            <h5 style="background-color: deepskyblue">${successMessage}</h5>
-            <h5 style="background-color: aquamarine">${message}</h5>
-            <h4 style="background-color: #f00">${error}</h4>
-            <table>
+            <h5 class="bg-success">${successMessage}</h5>
+            <h5 class="bg-info">${message}</h5>
+            <h4 class="bg-danger">${error}</h4>
+            <table class="table table-striped">
                 <thead>
                     <tr>
-                        <td>Título</td>
-                        <td>Descrição</td>
-                        <td>Qtde Páginas</td>
+                        <th>Título</th>
+                        <th>Descrição</th>
+                        <th>Qtde Páginas</th>
                     </tr>
                 </thead>
                 <tbody>

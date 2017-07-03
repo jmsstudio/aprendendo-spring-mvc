@@ -24,6 +24,8 @@
         <link href="${contextPath}resources/css/guia-do-programador-style.css" rel="stylesheet" type="text/css" media="all"/>
         <link href="${contextPath}resources/css/produtos.css" rel="stylesheet" type="text/css" media="all"/>
         <link rel="canonical" href="http://www.casadocodigo.com.br/"/>
+        <link href="${contextPath}resources/css/bootstrap.min.css" rel="stylesheet">
+        <link href="${contextPath}resources/css/bootstrap-theme.min.css" rel="stylesheet">
     </head>
     <body>
         <header id="layout-header">
@@ -61,7 +63,7 @@
         <section class="container middle">
             <h2 id="cart-title">Seu carrinho de compras</h2>
 
-            <table id="cart-table">
+            <table id="cart-table" class="table table-bordered">
                 <colgroup>
                     <col class="item-col"/>
                     <col class="item-price-col"/>
@@ -95,7 +97,7 @@
                         <td class="numeric-cell">${carrinhoCompras.getTotal(item)}</td>
                         <td class="remove-item">
                             <form action="${s:mvcUrl('PC#remover').arg(0, item.produto.id).arg(1, item.tipoPreco).build()}" method="post">
-                                <input type="image" src="${contextPath}resources/images/excluir.png" alt="Excluir" title="Excluir" />
+                                <input type="image" src="${contextPath}resources/imagens/excluir.png" alt="Excluir" title="Excluir" />
                             </form>
                         </td>
                     </tr>
@@ -105,7 +107,7 @@
                         <tr>
                             <td colspan="3">
                                 <form action="${s:mvcUrl('PC#finalizar').build()}" method="post">
-                                    <input type="submit" class="checkout" name="checkout" value="Finalizar compra"/>
+                                    <button type="submit" class="checkout btn btn-primary" name="checkout">Finalizar compra</button>
                                 </form>
                             </td>
                             <td class="quantity-input-cell">

@@ -3,10 +3,7 @@ package br.com.jmsstudio.model;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -23,7 +20,7 @@ public class Usuario implements UserDetails {
     @Column
     private String senha;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Papel> papeis = new ArrayList<>();
 
     @Override

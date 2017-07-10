@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -36,9 +37,12 @@
 					<nav id="main-nav">
 
 						<ul class="clearfix">
-							<li><a href="${s:mvcUrl('PC#list')}" rel="nofollow">Listagem de Produtos</a></li>
-
-							<li><a href="${s:mvcUrl('PC#form')}" rel="nofollow">Cadastro de Produtos</a></li>
+                            <sec:authorize access="hasRole('ROLE_ADMIN')">
+							    <li><a href="${s:mvcUrl('PC#list')}" rel="nofollow">Listagem de Produtos</a></li>
+                            </sec:authorize>
+                            <sec:authorize access="isAuthenticated()">
+							    <li><a href="${s:mvcUrl('PC#form')}" rel="nofollow">Cadastro de Produtos</a></li>
+                            </sec:authorize>
 
 							<li><a href="/cart" rel="nofollow">Carrinho</a></li>
 

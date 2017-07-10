@@ -10,12 +10,12 @@ import javax.servlet.ServletRegistration;
 public class SpringMVCServlet extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[]{ SecurityConfig.class };
+        return new Class<?>[]{ SecurityConfig.class, AppConfig.class, JPAConfig.class };
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[]{ AppConfig.class, JPAConfig.class };
+        return new Class<?>[]{  };
     }
 
     @Override

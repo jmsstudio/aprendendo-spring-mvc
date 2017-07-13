@@ -43,7 +43,9 @@
                             </li>
                         </c:forEach>
                     </ul>
-                    <button type="submit" class="submit-image icon-basket-alt" alt="Compre Agora" title="<s:message code='detalhes.comprar'/>"></button>
+                    <button type="submit" class="submit-image icon-basket-alt" alt="<s:message code='detalhes.comprar'/>" title="<s:message code='detalhes.comprar'/>">
+                        <s:message code='detalhes.comprar'/>
+                    </button>
 
                 </form:form>
 

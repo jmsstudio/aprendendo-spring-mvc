@@ -36,17 +36,29 @@
 
                 <ul class="clearfix">
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
-                        <li><a href="${s:mvcUrl('PC#list').build()}" rel="nofollow">Listagem de Produtos</a></li>
+                        <li><a href="${s:mvcUrl('PC#list').build()}" rel="nofollow"><s:message code="header.listaProdutos" /></a></li>
                     </sec:authorize>
                     <sec:authorize access="isAuthenticated()">
-                        <li><a href="${s:mvcUrl('PC#form').build()}" rel="nofollow">Cadastro de Produtos</a></li>
+                        <li><a href="${s:mvcUrl('PC#form').build()}" rel="nofollow"><s:message code="header.cadastroProdutos" /></a></li>
                     </sec:authorize>
 
-                    <li><a href="${s:mvcUrl('CC#list').build()}" rel="nofollow">Carrinho (${carrinhoCompras.quantidade})</a></li>
+                    <li><a href="${s:mvcUrl('CC#list').build()}" rel="nofollow"><s:message code="header.carrinho" arguments="${carrinhoCompras.quantidade}"/></a></li>
 
-                    <li><a href="/pages/sobre-a-casa-do-codigo" rel="nofollow">Sobre Nós</a></li>
+                    <li><a href="/pages/sobre-a-casa-do-codigo" rel="nofollow"><s:message code="header.sobreNos" /></a></li>
 
-                    <li><a href="/pages/perguntas-frequentes" rel="nofollow">Perguntas Frequentes</a></li>
+                    <li><a href="/pages/perguntas-frequentes" rel="nofollow"><s:message code="header.perguntasFrequentes" /></a></li>
+
+                    <li style="margin: 0 5px">
+                        <a href="?locale=en_US">
+                            <img class="flag" src="https://lipis.github.io/flag-icon-css/flags/4x3/us.svg" alt="United States of America Flag">
+                        </a>
+                    </li>
+
+                    <li style="margin: 0 5px">
+                        <a href="?locale=pt_BR">
+                            <img class="flag" src="https://lipis.github.io/flag-icon-css/flags/4x3/br.svg" alt="Brazil Flag">
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>

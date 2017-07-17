@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class Produto {
     int paginas;
 
     @ElementCollection
-    List<Preco> precos;
+    List<Preco> precos = new ArrayList<>();
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     LocalDate dataLancamento;

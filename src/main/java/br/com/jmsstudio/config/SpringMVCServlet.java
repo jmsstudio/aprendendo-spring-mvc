@@ -1,5 +1,6 @@
 package br.com.jmsstudio.config;
 
+import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.context.request.RequestContextListener;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -9,7 +10,7 @@ import javax.servlet.*;
 public class SpringMVCServlet extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[]{ SecurityConfig.class, AppConfig.class, JPAConfig.class };
+        return new Class<?>[]{ SecurityConfig.class, AppConfig.class, JPAConfig.class, JPAProdConfig.class };
     }
 
     @Override
@@ -25,7 +26,8 @@ public class SpringMVCServlet extends AbstractAnnotationConfigDispatcherServletI
     @Override
     protected Filter[] getServletFilters() {
         CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter("UTF-8");
-        return new Filter[]{ encodingFilter };
+        OpenEntityManagerInViewFilter openEntityManagerInViewFilter = new OpenEntityManagerInViewFilter();
+        return new Filter[]{ encodingFilter, openEntityManagerInViewFilter };
     }
 
     @Override

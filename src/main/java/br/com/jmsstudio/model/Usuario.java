@@ -18,6 +18,9 @@ public class Usuario implements UserDetails {
     private String nome;
 
     @Column
+    private String email;
+
+    @Column
     private String senha;
 
     @OneToMany(fetch = FetchType.EAGER)
@@ -36,6 +39,14 @@ public class Usuario implements UserDetails {
     @Override
     public String getUsername() {
         return this.codigoLogin;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
